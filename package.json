@@ -20,12 +20,15 @@
     ]
   },
   "dependencies": {
-    "@ant-design/pro-layout": "^5.0.12",
     "@umijs/preset-react": "1.x",
     "@umijs/test": "^3.3.1",
+    "antd": "^4.9.4",
+    "axios": "^0.21.1",
+    "crypto-js": "^4.0.0",
     "lint-staged": "^10.0.7",
     "prettier": "^1.19.1",
     "react": "^16.12.0",
+    "react-container-query": "^0.11.3",
     "react-dom": "^16.12.0",
     "umi": "^3.3.1",
     "yorkie": "^2.0.0"
