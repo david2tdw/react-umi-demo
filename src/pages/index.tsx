@@ -1,12 +1,12 @@
 import React from 'react';
-import styles from './index.less';
+// import styles from './index.less';
+import { Redirect } from 'umi';
 
-export default () => {
-  return (
-    <>
-    <div>
-      <h1 className={styles.title}>Page index app1111</h1>
-    </div>
-    </>
-  );
-}
+export default () => (
+  <Redirect
+    to={{
+      pathname: '/login',
+      state: {},
+    }}
+  ></Redirect>
+);
