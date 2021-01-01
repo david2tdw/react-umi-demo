@@ -1,6 +1,6 @@
-// import { Page, Exception } from '@components';
-import Exception from '../components/Exception';
-import Page from '../components/PageWrapper';
+import { Page, Exception } from '@/components';
+// import Exception from '../components/Exception';
+// import Page from '../components/PageWrapper';
 
 export default function() {
   return (

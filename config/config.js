@@ -44,10 +44,12 @@ export default {
   ],
   alias: {
     '@': resolve(__dirname, '../src'),
-    '@utils': resolve(__dirname, '../src/utils'),
+    utils: resolve(__dirname, '../src/utils'),
     '@context': resolve(__dirname, '../src/layouts/Context'),
     // 组件库 - this not work
     // '@components': resolve(__dirname, '../src/components'),
+    // 系统配置
+    '@platformConfig': resolve(__dirname, './platform.config'),
     // 全局services
     '@services': resolve(__dirname, '../src/services'),
     // 全局models
