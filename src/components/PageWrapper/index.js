@@ -21,7 +21,7 @@ class PageWrapper extends PureComponent {
   };
 
   render() {
-    return <div>1111</div>;
+    return <div className={classNames(styles.children)}>1111</div>;
   }
 }
 
