@@ -46,8 +46,8 @@ export default {
     '@': resolve(__dirname, '../src'),
     '@utils': resolve(__dirname, '../src/utils'),
     '@context': resolve(__dirname, '../src/layouts/Context'),
-    // 组件库
-    '@components': resolve(__dirname, '../src/components'),
+    // 组件库 - this not work
+    // '@components': resolve(__dirname, '../src/components'),
     // 全局services
     '@services': resolve(__dirname, '../src/services'),
     // 全局models
