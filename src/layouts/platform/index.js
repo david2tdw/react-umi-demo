@@ -3,6 +3,7 @@ import { connect } from 'dva';
 import { history } from 'umi';
 import { ContainerQuery } from 'react-container-query';
 import { Layout, BackTop, Icon } from 'antd';
+import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import classNames from 'classnames';
 
 import PropTypes from 'prop-types';
@@ -105,7 +106,7 @@ class Platform extends PureComponent {
    */
   toggle = () => {
     this.setState({
-      collspsed: !this.state.collspsed,
+      collapsed: !this.state.collapsed,
     });
   };
 
@@ -138,16 +139,16 @@ class Platform extends PureComponent {
               <Sider
                 trigger={null}
                 collapsible
-                collspsed={collapsed}
+                collapsed={collapsed}
                 className={styles.sider}
               >
                 <Logo collapsed={collapsed}></Logo>
-                <Menus
+                {/* <Menus
                   location={location}
                   menusData={menusData}
                   defaultKey={defaultKey}
                   collapsed={collapsed}
-                />
+                /> */}
               </Sider>
               {/* 系统主体部分 */}
               <Layout
@@ -158,13 +159,24 @@ class Platform extends PureComponent {
                 {/* 系统头部 */}
                 <Header className={styles.contentHeader}>
                   <div style={{ width: 100 }}>
-                    <Icon
+                    {collapsed ? (
+                      <MenuFoldOutlined
+                        className={styles.trigger}
+                        onClick={this.toggle}
+                      />
+                    ) : (
+                      <MenuUnfoldOutlined
+                        className={styles.trigger}
+                        onClick={this.toggle}
+                      />
+                    )}
+                    {/* <Icon
                       className={styles.trigger}
-                      type={collapsed ? 'menu-unfold' : 'menu-fold'}
+                      type={collapsed ? <MenuFoldOutlined /> : <MenuUnfoldOutlined />}
                       onClick={this.toggle}
-                    />
+                    /> */}
                   </div>
-                  <ContentHeader />
+                  {/* <ContentHeader /> */}
                 </Header>
                 {/* 内容区域 */}
                 <Content className={styles.content}>
@@ -172,7 +184,7 @@ class Platform extends PureComponent {
                   {/* Authorized */}
                 </Content>
                 {/* 页脚 */}
-                <Footer />
+                {/* <Footer /> */}
               </Layout>
               {/* 返回顶端 */}
               {/* backTop */}
