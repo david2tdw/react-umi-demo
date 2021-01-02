@@ -2,7 +2,7 @@ import { PureComponent } from 'react';
 import { connect } from 'dva';
 import { history } from 'umi';
 import { ContainerQuery } from 'react-container-query';
-import { Layout, BackTop, Icon } from 'antd';
+import { Layout, BackTop } from 'antd';
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import classNames from 'classnames';
 
@@ -184,7 +184,7 @@ class Platform extends PureComponent {
                   {/* Authorized */}
                 </Content>
                 {/* 页脚 */}
-                {/* <Footer /> */}
+                <Footer />
               </Layout>
               {/* 返回顶端 */}
               {/* backTop */}

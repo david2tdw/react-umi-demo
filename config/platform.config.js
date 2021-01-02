@@ -15,9 +15,9 @@ module.exports = {
   // 登录页名称
   loginName: '数据平台',
   // 系统名称
-  sysName: 'TEST-Pro',
+  sysName: 'React-PRO',
   // 版权
-  copyright: '2019 mpw0311@163.com.',
+  copyright: '2021 tdw@163.com.',
   // 是否开启菜单权限校验
   menuPermission: true,
   // table默认一页条数
