@@ -1,6 +1,6 @@
 import { extend } from 'umi-request';
 import { notification } from 'antd';
-import { router } from 'umi';
+import { history } from 'umi';
 import { apiPrefix } from '@platformConfig';
 
 const codeMessage = {
@@ -43,15 +43,15 @@ const errorHandler = error => {
   });
   // environment should not be used
   if (status === 403) {
-    router.push('/exception/403');
+    history.push('/exception/403');
     return;
   }
   if (status <= 504 && status >= 500) {
-    router.push('/exception/500');
+    history.push('/exception/500');
     return;
   }
   if (status >= 400 && status < 422) {
-    router.push('/exception/404');
+    history.push('/exception/404');
   }
 };
 

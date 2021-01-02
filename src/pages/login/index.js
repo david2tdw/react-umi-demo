@@ -11,8 +11,29 @@ import styles from './index.less';
   loading: loading.global,
 }))
 class Index extends PureComponent {
-  componentDidMount() {}
-  handleSubmit = () => {};
+  componentDidMount() {
+    const {
+      location: { query = {} },
+    } = this.props;
+    if (query.status === '1') {
+      message.warning('用户未登录，请登录后访问！');
+    }
+  }
+  handleSubmit = values => {
+    console.log('123');
+    for (const name in values) {
+      if (values[name] === undefined) {
+        message.error('用户名或密码错误！');
+        return false;
+      }
+    }
+    this.props.dispatch({
+      type: 'login/login',
+      payload: {
+        ...values,
+      },
+    });
+  };
   render() {
     const { loading, isError } = this.props;
     return (

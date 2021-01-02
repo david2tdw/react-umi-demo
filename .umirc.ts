@@ -55,21 +55,21 @@ export default defineConfig({
   // ],
   headScripts: [`https://cdn.bootcss.com/d3/5.9.2/d3.min.js`],
   alias: {
-    '@': resolve(__dirname, '../src'),
-    utils: resolve(__dirname, '../src/utils'),
-    '@context': resolve(__dirname, '../src/layouts/Context'),
+    // '@': resolve(__dirname, '../src'),
+    '@utils': resolve(__dirname, 'src/utils'),
+    '@context': resolve(__dirname, 'src/layouts/Context'),
     // 组件库 - this not work
-    // '@components': resolve(__dirname, '../src/components'),
+    '@components': resolve(__dirname, 'src/components'),
     // 系统配置
-    '@platformConfig': resolve(__dirname, './platform.config'),
+    '@platformConfig': resolve(__dirname, 'config/platform.config'),
     // 全局services
-    '@services': resolve(__dirname, '../src/services'),
+    '@services': resolve(__dirname, 'src/services'),
     // 全局models
-    '@models': resolve(__dirname, '../src/models'),
+    '@models': resolve(__dirname, 'src/models'),
     //菜单配置项
-    '@menuConfig': resolve(__dirname, './menu.config.js'),
+    '@menuConfig': resolve(__dirname, 'config/menu.config.js'),
     // request请求
-    '@http': resolve(__dirname, '../src/utils/request.js'),
+    '@http': resolve(__dirname, 'src/utils/request.js'),
   },
   proxy: {
     '/api': {

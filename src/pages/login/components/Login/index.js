@@ -10,14 +10,14 @@ const FormItem = Form.Item;
   isError: login.isError,
 }))
 class Login extends PureComponent {
-  handleSubmit = e => {
-    e.preventDefault();
-    const { form, onSubmit } = this.props;
-    form.validateFields({ force: true }, (errors, values) => {
-      onSubmit(errors, values);
-    });
+  handleSubmit = values => {
+    console.log('443');
+    console.log('Success:', values);
+    const { onSubmit } = this.props;
+    onSubmit(values);
   };
   handleChange = () => {
+    console.log('handleChange');
     if (this.props.isError === true) {
       this.props.dispatch({
         type: 'login/save',
@@ -39,7 +39,7 @@ class Login extends PureComponent {
 
     return (
       <div className={styles.login_form}>
-        <Form onSubmit={this.handleSubmit}>
+        <Form onFinish={this.handleSubmit}>
           <FormItem
             {...error}
             name="username"
@@ -87,7 +87,7 @@ class Login extends PureComponent {
               type="primary"
               htmlType="submit"
               className={styles.login_form_button}
-              loading={loading}
+              // loading={loading}
             >
               login
             </Button>
