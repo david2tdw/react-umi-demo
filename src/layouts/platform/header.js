@@ -1,6 +1,7 @@
 import { routerRedux } from 'dva';
 import { connect } from 'dva';
 import { PureComponent } from 'react';
+import GlobalHeader from '../components/GlobalHeader';
 
 class Index extends PureComponent {
   handleLoadMore = () => {
@@ -34,6 +35,17 @@ class Index extends PureComponent {
   };
   render() {
     const { userInfo, message, notification } = this.props;
+    return (
+      <div style={{ width: '460px' }}>
+        <GlobalHeader
+          userInfo={userInfo}
+          message={message}
+          notification={notification}
+          handleLoadMore={this.handleLoadMore}
+          handleSetting={this.handleSetting}
+        ></GlobalHeader>
+      </div>
+    );
     return <div style={{ width: '460px' }}></div>;
   }
 }
