@@ -12,7 +12,8 @@ function Header(props) {
   } = props;
   return (
     <div className={styles.rightCenter}>
-      search, notice,
+      <Search className={`${styles.action} ${styles.search}`} />
+      notice,
       <User
         className={styles.action}
         userInfo={userInfo}

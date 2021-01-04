@@ -46,7 +46,6 @@ class Index extends PureComponent {
         ></GlobalHeader>
       </div>
     );
-    return <div style={{ width: '460px' }}></div>;
   }
 }
 
