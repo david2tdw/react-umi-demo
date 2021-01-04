@@ -176,7 +176,7 @@ class Platform extends PureComponent {
                       onClick={this.toggle}
                     /> */}
                   </div>
-                  {/* <ContentHeader /> */}
+                  <ContentHeader />
                 </Header>
                 {/* 内容区域 */}
                 <Content className={styles.content}>
@@ -197,9 +197,19 @@ class Platform extends PureComponent {
     );
   }
 }
-export default connect(platform => ({
-  platform,
-}))(Platform);
+
+function mapStateToProps({ global, menu, loading }) {
+  return {
+    ...global,
+    ...menu,
+    loading: loading.global,
+  };
+}
+export default connect(mapStateToProps)(props => (
+  <Media query="(max-width: 1200px)">
+    {isMobile => <Platform {...props} isMobile={isMobile} />}
+  </Media>
+));
 
 Platform.propTypes = {
   children: PropTypes.element.isRequired,

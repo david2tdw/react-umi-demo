@@ -3,10 +3,38 @@ import { connect } from 'dva';
 import { PureComponent } from 'react';
 
 class Index extends PureComponent {
-  handleLoadMore = () => {};
-  handleSetting = () => {};
+  handleLoadMore = () => {
+    const { dispatch } = this.props;
+    dispatch({
+      type: 'global/getMessage',
+      payload: {
+        size: 10,
+      },
+    });
+  };
+  handleSetting = param => {
+    const { dispatch } = this.props;
+    const { key, item } = param;
+    const { state } = item.props;
+    if (key === 'layout') {
+      dispatch({
+        type: 'global/logout',
+        payload: {
+          ...state,
+        },
+      });
+    } else {
+      dispatch(
+        routerRedux.push({
+          pathname: key,
+          state,
+        }),
+      );
+    }
+  };
   render() {
-    return <div>aaaa</div>;
+    const { userInfo, message, notification } = this.props;
+    return <div style={{ width: '460px' }}></div>;
   }
 }
 
