@@ -12,7 +12,7 @@ import { Exception } from '@components';
 import Context from '@context';
 import Menus from '../components/Menus';
 import Footer from './Footer';
-
+import Authorized from '../components/Authorized';
 import { query } from '../constant';
 import ContentHeader from './header';
 import Logo from './logo';
@@ -170,24 +170,22 @@ class Platform extends PureComponent {
                         onClick={this.toggle}
                       />
                     )}
-                    {/* <Icon
-                      className={styles.trigger}
-                      type={collapsed ? <MenuFoldOutlined /> : <MenuUnfoldOutlined />}
-                      onClick={this.toggle}
-                    /> */}
                   </div>
                   <ContentHeader />
                 </Header>
                 {/* 内容区域 */}
                 <Content className={styles.content}>
                   {/* 路由权限 */}
-                  {/* Authorized */}
+                  <Authorized noMatch={Exception403} {...this.props} />
                 </Content>
                 {/* 页脚 */}
                 <Footer />
               </Layout>
               {/* 返回顶端 */}
-              {/* backTop */}
+              <BackTop
+                target={() => document.getElementById('backTop')}
+                style={{ right: 20, bottom: 25 }}
+              />
             </Layout>
             {/* 点赞弹窗 */}
             {/* <StartedModal /> */}
