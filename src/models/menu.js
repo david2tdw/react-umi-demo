@@ -1,6 +1,6 @@
 import * as api from '../services';
 import orginalData from '@menuConfig';
-import { menuFilter, flattenMenu } from '@utils/_';
+import { munesFilter, flattenMenu } from '@utils/_';
 import { menuPermission } from '@platformConfig';
 
 export default {
@@ -14,7 +14,26 @@ export default {
     setup({ dispatch, history }) {},
   },
   effects: {
-    *getMenuData(_, { call, put, select }) {},
+    *getMenuData(_, { call, put, select }) {
+      let menusData = yield select(({ menu }) => menu.menuData);
+      if (!(menusData && menusData.length > 0)) {
+        const { data = [] } = yield call(api.getMenuData, {});
+        const { menusData, diffMenuData } = munesFilter(
+          orginalData,
+          data,
+          menuPermission,
+        );
+        const flattenMenuData = flattenMenu(menusData);
+        yield put({
+          type: 'save',
+          payload: {
+            menusData,
+            diffMenuData,
+            flattenMenuData,
+          },
+        });
+      }
+    },
   },
   reducers: {
     save(state, action) {

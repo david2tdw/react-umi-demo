@@ -143,12 +143,12 @@ class Platform extends PureComponent {
                 className={styles.sider}
               >
                 <Logo collapsed={collapsed}></Logo>
-                {/* <Menus
+                <Menus
                   location={location}
                   menusData={menusData}
                   defaultKey={defaultKey}
                   collapsed={collapsed}
-                /> */}
+                />
               </Sider>
               {/* 系统主体部分 */}
               <Layout
