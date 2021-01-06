@@ -20,7 +20,7 @@ export const getReposStargazers = async function(payload) {
   if (!gitname) {
     throw new Error('getReposStargazers：gitname参数为空');
   }
-  return await getStarHistory(gitname).catch(err => {
+  return getStarHistory(gitname).catch(err => {
     console.log(err);
   });
 };

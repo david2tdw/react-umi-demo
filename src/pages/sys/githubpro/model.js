@@ -102,6 +102,46 @@ export default {
         });
       }
     },
+    //获取历史stars趋势图数据
+    *getReposStars({ payload }, { call, put, select }) {
+      const { account: preAccount, repoName: preRepoName } = yield select(
+        ({ githubPro }) => githubPro.starHistory,
+      );
+      const { account, repoName } = payload;
+      // 判断用户名项目名不能为空并且不相等
+      if (
+        !account ||
+        !repoName ||
+        (preAccount === account && repoName === preRepoName)
+      ) {
+        return;
+      }
+      const rows = yield call(api.getReposStargazers, {
+        gitname: `${account}/${repoName}`,
+      });
+      yield put({
+        type: 'save',
+        payload: {
+          starHistory: {
+            account,
+            repoName,
+            columns: [
+              {
+                field: 'date',
+                name: '日期',
+                type: 'string',
+              },
+              {
+                field: 'starNum',
+                name: 'starNum',
+                type: 'number',
+              },
+            ],
+            rows: rows || [],
+          },
+        },
+      });
+    },
   },
   reducers: {
     save(state, action) {
