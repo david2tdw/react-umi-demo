@@ -20,39 +20,67 @@ export default defineConfig({
   externals: {
     d3: 'window.d3',
   },
-  // plugins: [
-  //   [
-  //     'umi-plugin-react',
-  //     {
-  //       antd: true,
-  //       dva: true,
-  //       dynamicImport: {
-  //         webpackChunkName: true,
-  //         loadingComponent: './components/PageLoading/index.js',
-  //       },
-  //       title: 'antd-umi-2.6',
-  //       dll: true,
-  //       locale: {
-  //         enable: false,
-  //       },
-  //       routes: {
-  //         exclude: [
-  //           /models\//,
-  //           /services\//,
-  //           /model\.(t|j)sx?$/,
-  //           /service\.(t|j)sx?$/,
-  //           /components\//,
-  //         ],
-  //       },
-  //       // cdn
-  //       scripts: [
-  //         {
-  //           src: 'https://cdn.bootcss.com/d3/5.9.2/d3.min.js',
-  //         },
-  //       ],
-  //     },
-  //   ],
-  // ],
+  // https://github.com/zthxxx/react-dev-inspector
+  plugins: ['react-dev-inspector/plugins/umi/react-inspector'],
+  inspectorConfig: {
+    // loader options type and docs see below
+    exclude: [],
+    babelPlugins: [],
+    babelOptions: {},
+  },
+  routes: [
+    {
+      path: '/',
+      component: '../layouts/BlankLayout',
+      routes: [
+        {
+          path: '/user',
+          component: '../layouts/UserLayout',
+          routes: [
+            {
+              path: '/user',
+              redirect: '/user/login',
+            },
+            {
+              name: 'login',
+              icon: 'smile',
+              path: '/user/login',
+              component: './user/login',
+            },
+          ],
+        },
+        // {
+        //   path:'/',
+        //   // component: '../layouts/BasicLayout',
+        //   // Routes: ['src/pages/Authorized'],
+        //   authority: ['admin','user'],
+        //   routes: [
+        //     {
+        //       path: '/',
+        //       redirect: '/dashboard/analysis'
+        //     },
+        //     {
+        //       path: '/dashboard',
+        //       name: 'dashboard',
+        //       icon: 'dashboard',
+        //       routes: [
+        //         {
+        //           path: '/',
+        //           redirect: '/dashboard/analysis',
+        //         },
+        //         {
+        //           name: 'analysis',
+        //           icon: 'smile',
+        //           path: '/dashboard/analysis',
+        //           component: './dashboard/analysis'
+        //         }
+        //       ]
+        //     }
+        //   ]
+        // }
+      ],
+    },
+  ],
   headScripts: [`https://cdn.bootcss.com/d3/5.9.2/d3.min.js`],
   alias: {
     // '@': resolve(__dirname, '../src'),
@@ -80,5 +108,11 @@ export default defineConfig({
       },
     },
   },
-  history: { type: 'hash' },
+  history: { type: 'browser' },
+  locale: {
+    default: 'zh-CN',
+    antd: true,
+    // default true, when it is true, will use `navigator.language` overwrite default
+    baseNavigator: true,
+  },
 });

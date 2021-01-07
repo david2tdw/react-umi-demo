@@ -3,7 +3,7 @@ import { message } from 'antd';
 import * as api from '@services';
 
 export default {
-  namespace: 'global',
+  namespace: 'global-old',
   state: {
     userInfo: {},
     message: [],

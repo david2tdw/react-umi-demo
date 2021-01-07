@@ -14,8 +14,16 @@ Start the dev server,
 $ yarn start
 ```
 
-参考：
+## plugins:
+```
+yarn upgrade react@^17.0.0
+yarn upgrade react-dom@^17.0.0
+yarn add @ant-design/pro-layout
+```
+
+## 参考：
 https://github.com/mpw0311/antd-umi-sys
+https://github.com/chenshuai2144/merge-value-hooks#readme
 
 
 How to remove experimentalDecorators warning in VSCode
