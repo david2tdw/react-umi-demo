@@ -45,7 +45,7 @@ export default defineConfig({
               name: 'login',
               icon: 'smile',
               path: '/user/login',
-              component: './user/login/index.js',
+              component: './user/login',
             },
             {
               name: 'register',
