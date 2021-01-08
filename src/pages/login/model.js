@@ -4,7 +4,7 @@ import { routerRedux } from 'dva';
 import { encrypt } from '@/utils/CryptoJS';
 
 export default {
-  namespace: 'login',
+  namespace: 'login1111',
   state: {
     isError: false,
   },
