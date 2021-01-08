@@ -12,7 +12,7 @@ import { Dispatch, Link, connect } from 'umi';
 // import Login from './components/Login';
 // import { StateType } from '@/models/login';
 
-const Login: FC = () => {
+const Login = () => {
   return (
     <div>
       login form....

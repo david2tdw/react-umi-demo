@@ -36,3 +36,6 @@ https://www.jianshu.com/p/50fe3fb9f7c3
 
 React 子组件的defaultProps、propTypes
 https://www.jianshu.com/p/a1a505929ba5
+
+## 问题
+页面用.tsx或.js 文件都可以，但页面中不能使用PureComponent, 否则渲染不出来。
