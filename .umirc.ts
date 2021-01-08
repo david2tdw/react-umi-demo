@@ -1,8 +1,8 @@
 // umi 配置，同 config/config.js，二选一
 
-import { defineConfig } from 'umi';
-import { resolve } from 'path';
-const theme = require('./config/theme.config.js');
+import { defineConfig } from 'umi'
+import { resolve } from 'path'
+const theme = require('./config/theme.config.js')
 
 export default defineConfig({
   // layout: {},
@@ -44,8 +44,14 @@ export default defineConfig({
             {
               name: 'login',
               icon: 'smile',
-              path: 'login',
+              path: '/user/login',
               component: './user/login/index.js',
+            },
+            {
+              name: 'register',
+              icon: 'smile',
+              path: '/user/register',
+              component: './user/register',
             },
             {
               component: '404',
@@ -145,4 +151,4 @@ export default defineConfig({
     // default true, when it is true, will use `navigator.language` overwrite default
     baseNavigator: true,
   },
-});
+})

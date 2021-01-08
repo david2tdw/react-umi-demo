@@ -44,19 +44,20 @@ class Index extends PureComponent {
   render() {
     const { loading, isError } = this.props;
     return (
-      <div className={styles.content}>
-        <Row>
-          <Col span={24} className={styles.logo}>
-            <img alt="logo" src={logo} />
-          </Col>
-        </Row>
-        <h2 className={styles.title}>{loginName}111</h2>
-        <Login
-          onSubmit={this.handleSubmit}
-          loading={loading}
-          isError={isError}
-        ></Login>
-      </div>
+      // <div className={styles.content}>
+      //   <Row>
+      //     <Col span={24} className={styles.logo}>
+      //       <img alt="logo" src={logo} />
+      //     </Col>
+      //   </Row>
+      //   <h2 className={styles.title}>{loginName}111</h2>
+      //   <Login
+      //     onSubmit={this.handleSubmit}
+      //     loading={loading}
+      //     isError={isError}
+      //   ></Login>
+      // </div>
+      <div>user login page.</div>
     );
   }
 }
