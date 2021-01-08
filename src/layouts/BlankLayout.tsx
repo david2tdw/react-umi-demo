@@ -5,7 +5,10 @@ const InspectorWrapper =
   process.env.NODE_ENV === 'development' ? Inspector : React.Fragment;
 
 const Layout: React.FC = ({ children }) => {
-  return <InspectorWrapper>{children}</InspectorWrapper>;
+  return <InspectorWrapper>
+    [blank layout]
+    {children}
+  </InspectorWrapper>;
 };
 
 export default Layout;

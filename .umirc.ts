@@ -39,13 +39,43 @@ export default defineConfig({
           routes: [
             {
               path: '/user',
-              redirect: '/user/login',
+              redirect: '/user/login'
             },
             {
               name: 'login',
               icon: 'smile',
-              path: '/user/login',
-              component: './user/login',
+              path: 'login',
+              component: './user/login/index.js',
+            },
+            {
+              component: '404',
+            },
+          ]
+        },
+        {
+          path: '/',
+          component: '../layouts/BasicLayout',
+          routes: [
+            {
+              path: '/',
+              redirect: '/dashboard/analysis',
+            },
+            {
+              path: '/dashboard',
+              name: 'dashboard',
+              icon: 'dashboard',
+              routes: [
+                {
+                  path: '/',
+                  redirect: '/dashboard/analysis',
+                },
+                {
+                  name: 'analysis',
+                  icon: 'smile',
+                  path: '/dashboard/analysis',
+                  component: './dashboard/analysis',
+                },
+              ]
             },
           ],
         },
