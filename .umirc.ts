@@ -2,6 +2,8 @@
 
 import { defineConfig } from 'umi'
 import { resolve } from 'path'
+import { SmileOutlined, CrownOutlined } from '@ant-design/icons';
+
 const theme = require('./config/theme.config.js')
 
 export default defineConfig({
@@ -69,7 +71,7 @@ export default defineConfig({
             {
               path: '/dashboard',
               name: 'dashboard',
-              icon: 'dashboard',
+              icon: 'dashboardxx',
               routes: [
                 {
                   path: '/',
@@ -83,6 +85,19 @@ export default defineConfig({
                 },
               ]
             },
+            {
+              path: '/list',
+              icon: 'table',
+              name: 'list',
+              routes: [
+                {
+                  name: 'card-list',
+                  icon: 'smile',
+                  path: '/list/card-list',
+                  component: './list/card-list',
+                },
+              ]
+            }
           ],
         },
         // {
