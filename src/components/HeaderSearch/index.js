@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component, PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Input, AutoComplete } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
@@ -8,7 +8,7 @@ import styles from './index.less';
 
 const { Option } = AutoComplete;
 
-class HeaderSearch extends PureComponent {
+class HeaderSearch extends Component {
   // 用来验证父组件传值的合法性
   static propTypes = {
     className: PropTypes.string,
@@ -84,12 +84,15 @@ class HeaderSearch extends PureComponent {
       [styles.show]: searchMode,
     });
     return (
+      // <div>
+      //   1231231
+      // </div>
       <span
         className={classNames(className, styles.headerSearch)}
         style={{ color: theme === 'dark' ? '#fff' : 'rgba(0, 0, 0, 0.65)' }}
         onClick={this.enterSearchMode}
       >
-        <SearchOutlined />
+        <SearchOutlined />123
         <AutoComplete
           key="AutoComplete"
           {...restProps}

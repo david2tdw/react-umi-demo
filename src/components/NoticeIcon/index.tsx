@@ -1,11 +1,11 @@
 import { BellOutlined } from '@ant-design/icons';
-import { Badge, notification, Spin, Tabs } from 'antd';
+import { Badge,  Spin, Tabs } from 'antd';
 import useMergeValue from 'use-merge-value';
 
 import React from 'react';
 import classNames from 'classnames';
 import NoticeList, { NoticeIconTabProps } from './NoticeList';
-
+import HeaderDropdown from '../HeaderDropdown'
 import styles from './index.less';
 
 const { TabPane } = Tabs;
@@ -71,10 +71,12 @@ const NoticeIcon: React.FC<NoticeIconProps> & {
           showClear,
           showViewMore,
         } = child.props;
-        const msgCount = count || count === 0 ? count : 0;
-        const tabTile: string = msgCount > 0 ? `${title} (${msgCount})` : title;
+
+        const len = list && list.length ? list.length: 0
+        const msgCount = count || count === 0 ? count : len;
+        const tabTitle: string = msgCount > 0 ? `${title} (${msgCount})` : title;
         panes.push(
-          <TabPane tab={tabTile} key={tabKey}>
+          <TabPane tab={tabTitle} key={tabKey}>
             <NoticeList
               {...child.props}
               clearText={clearText}
@@ -126,7 +128,18 @@ const NoticeIcon: React.FC<NoticeIconProps> & {
     return trigger;
   }
 
-  return <div>header drop down</div>;
+  return (
+    <HeaderDropdown
+      placement="bottomRight"
+      overlay={notificationBox}
+      overlayClassName={styles.popover}
+      trigger={['click']}
+      visible={visible}
+      onVisibleChange={setVisible}
+    >
+      {trigger}
+    </HeaderDropdown>
+  );
 };
 
 NoticeIcon.defaultProps = {
