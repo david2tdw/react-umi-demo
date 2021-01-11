@@ -16,6 +16,7 @@ export default {
         ...rest,
       });
       if (status === 0) {
+        console.log('xxxxxxx')
         sessionStorage.setItem('isLogin', true);
         yield put(routerRedux.push('/sys'));
       } else {
