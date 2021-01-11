@@ -8,8 +8,8 @@ import {Tooltip, Tag } from 'antd'
 import React from 'react'
 import { connect, ConnectProps } from 'umi'
 import { ConnectState } from '@/models/connect'
-import NoticeIconView from './NoticeIconview'
-
+import NoticeIconView from './NoticeIconView'
+import Avatar from './AvatarDropdown'
 
 export interface GlobalHeaderRightProps extends Partial<ConnectProps>, Partial<ProSettings> {
   theme?: ProSettings['navTheme'] | 'realDark'
@@ -58,7 +58,7 @@ const  GlobalHeaderRight: React.SFC<GlobalHeaderRightProps> = props => {
         userInfo={userInfo}
         onSetting={handleSetting}
       /> */}
-      12312312312
+      <Avatar menu />
     </div>
   );
 }
