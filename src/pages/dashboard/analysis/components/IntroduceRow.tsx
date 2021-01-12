@@ -4,7 +4,7 @@ import { Col, Row, Tooltip } from 'antd'
 import { FormattedMessage } from 'umi'
 import React from 'react'
 import numeral from 'numeral'
-import { ChartCard, Field, MiniArea, MiniBar } from './Charts'
+import { ChartCard, Field, MiniArea, MiniBar, MiniProgress } from './Charts'
 import { VisitDataType } from './data.d'
 import styles from '../style.less'
 import Trend from './Trend'
@@ -90,8 +90,8 @@ const IntroduceRow = ({ loading, visitData }: { loading: boolean; visitData: Vis
         }
         contentHeight={46}
       >
-        <MiniArea color="#975FE4" data={visitData}/>
-        </ChartCard>
+        <MiniArea color="#975FE4" data={visitData} />
+      </ChartCard>
     </Col>
     <Col {...topColResponsiveProps}>
       <ChartCard
@@ -153,12 +153,25 @@ const IntroduceRow = ({ loading, visitData }: { loading: boolean; visitData: Vis
         total="78%"
         footer={
           <div style={{ whiteSpace: 'nowrap', overflow: 'hidden' }}>
-            trend
+            <Trend flag="up" style={{ marginRight: 16 }}>
+              <FormattedMessage
+                id="dashboardandanalysis.analysis.week"
+                defaultMessage="Weekly Changes"
+              />
+              <span className={styles.trendText}>12%</span>
+            </Trend>
+            <Trend flag="down">
+              <FormattedMessage
+                id="dashboardandanalysis.analysis.day"
+                defaultMessage="Weekly Changes"
+              />
+              <span className={styles.trendText}>11%</span>
+            </Trend>
           </div>
         }
         contentHeight={46}
       >
-        MiniProgress
+        <MiniProgress percent={78} strokeWidth={8} target={80} color="#13C2C2" targetLabel={'target label'} />
       </ChartCard>
     </Col>
   </Row>
