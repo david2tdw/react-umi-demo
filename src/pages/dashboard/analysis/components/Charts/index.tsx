@@ -1,6 +1,8 @@
 import ChartCard from './ChartCard'
 import Field from './Field'
 import MiniArea from './MiniArea'
+import MiniBar from './MiniBar'
+
 import numeral from 'numeral'
 
 
@@ -11,6 +13,7 @@ const Charts = {
   ChartCard,
   Field,
   MiniArea,
+  MiniBar,
 }
 
 export {
@@ -19,4 +22,5 @@ export {
   ChartCard,
   Field,
   MiniArea,
+  MiniBar,
 }

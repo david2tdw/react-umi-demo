@@ -4,7 +4,7 @@ import { Col, Row, Tooltip } from 'antd'
 import { FormattedMessage } from 'umi'
 import React from 'react'
 import numeral from 'numeral'
-import { ChartCard, Field, MiniArea, } from './Charts'
+import { ChartCard, Field, MiniArea, MiniBar } from './Charts'
 import { VisitDataType } from './data.d'
 import styles from '../style.less'
 import Trend from './Trend'
@@ -125,7 +125,7 @@ const IntroduceRow = ({ loading, visitData }: { loading: boolean; visitData: Vis
         }
         contentHeight={46}
       >
-        MiniBar
+        <MiniBar data={visitData} />
       </ChartCard>
     </Col>
     <Col {...topColResponsiveProps}>
