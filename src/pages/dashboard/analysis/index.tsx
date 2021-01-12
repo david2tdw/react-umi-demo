@@ -13,8 +13,7 @@ import {AnalysisData} from './data.d'
 import styles from './style.less'
 
 const IntroduceRow = React.lazy(() => import('./components/IntroduceRow'))
-// IntroduceRow
-// IntroduceRow
+const SalesCard = React.lazy(() => import('./components/SalesCard'));
 
 
 type RangePickerValue = RangePickerProps<moment.Moment>['value'];
@@ -64,19 +63,21 @@ class Analysis extends Component<AnalysisProps, AnalysisState> {
     })
   }
 
-  handleTabChange = () => {
+  handleTabChange = (key: string) => {
+    this.setState({
+      currentTabKey: key,
+    })
+  }
+
+  handleRangePickerChange = (rangePickerValue: RangePickerValue) => {
+
+  }
+  selectDate = (type: 'today' | 'week' | 'month' | 'year' ) => {
 
   }
 
-  handleRangePickerChange = () => {
-
-  }
-  selectDate = () => {
-
-  }
-
-  isActive = () => {
-
+  isActive = (type: 'today' | 'week' | 'month' | 'year') => {
+    return ''
   }
 
   render () {
@@ -98,7 +99,14 @@ class Analysis extends Component<AnalysisProps, AnalysisState> {
             <IntroduceRow loading={loading} visitData={visitData} />
           </Suspense>
           <Suspense fallback={null}>
-            salescard.
+            <SalesCard
+              rangePickerValue={rangePickerValue}
+              salesData={salesData}
+              isActive={this.isActive}
+              handleRangePickerChange={this.handleRangePickerChange}
+              loading={loading}
+              selectDate={this.selectDate}
+            />
           </Suspense>
           <Row gutter={24} style={{marginTop:24}}>
             <Col xl={12} lg={24}>
