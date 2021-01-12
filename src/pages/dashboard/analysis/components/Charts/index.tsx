@@ -1,5 +1,6 @@
 import ChartCard from './ChartCard'
 import Field from './Field'
+import MiniArea from './MiniArea'
 import numeral from 'numeral'
 
 
@@ -9,6 +10,7 @@ const Charts = {
   yuan,
   ChartCard,
   Field,
+  MiniArea,
 }
 
 export {
@@ -16,4 +18,5 @@ export {
   yuan,
   ChartCard,
   Field,
+  MiniArea,
 }

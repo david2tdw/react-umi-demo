@@ -38,6 +38,47 @@ class Analysis extends Component<AnalysisProps, AnalysisState> {
     rangePickerValue: getTimeDistance('year')
   }
 
+  reqRef: number = 0;
+  timeoutId: number = 0;
+
+  componentDidMount () {
+    const {dispatch} = this.props
+    this.reqRef = requestAnimationFrame(() => {
+      dispatch({
+        type: 'dashboardAndanalysis/fetch',
+      })
+    })
+  }
+  componentWillUnmount () {
+    const { dispatch} = this.props;
+    dispatch({
+      type: 'dashboardAndanalysis/clear',
+    })
+    cancelAnimationFrame(this.reqRef);
+    clearTimeout(this.timeoutId)
+  }
+
+  handleChangeSalesType = (e: RadioChangeEvent) => {
+    this.setState({
+      salesType: e.target.value,
+    })
+  }
+
+  handleTabChange = () => {
+
+  }
+
+  handleRangePickerChange = () => {
+
+  }
+  selectDate = () => {
+
+  }
+
+  isActive = () => {
+
+  }
+
   render () {
     const {rangePickerValue, salesType, currentTabKey} = this.state;
     const {dashboardAndanalysis, loading} = this.props;

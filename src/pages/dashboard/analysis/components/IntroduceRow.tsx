@@ -1,26 +1,27 @@
-import {InfoCircleOutlined} from '@ant-design/icons'
-import {Col, Row, Tooltip} from 'antd'
+import { InfoCircleOutlined } from '@ant-design/icons'
+import { Col, Row, Tooltip } from 'antd'
 
-import {FormattedMessage} from 'umi'
+import { FormattedMessage } from 'umi'
 import React from 'react'
 import numeral from 'numeral'
-import {ChartCard, Field} from './Charts'
-import {VisitDataType} from './data.d'
+import { ChartCard, Field, MiniArea, } from './Charts'
+import { VisitDataType } from './data.d'
 import styles from '../style.less'
+import Trend from './Trend'
 
-const topColResponsiveProps ={
+const topColResponsiveProps = {
   xl: 6,
   lg: 12,
-  style: {marginBottom: 24}
+  style: { marginBottom: 24 }
 }
 
-const IntroduceRow = ({loading, visitData}: {loading: boolean; visitData: VisitDataType[]}) => (
+const IntroduceRow = ({ loading, visitData }: { loading: boolean; visitData: VisitDataType[] }) => (
   <Row gutter={24}>
     <Col {...topColResponsiveProps}>
       <ChartCard
         bordered={false}
         title={
-          <FormattedMessage id="dashboardandanalysis.analysis.total-sales" defaultMessage="Total Sales" />
+          <FormattedMessage id="dashboardandanalysis.analysis.total-sales" defaultMessage="总销售额" />
         }
         action={
           <Tooltip
@@ -37,15 +38,130 @@ const IntroduceRow = ({loading, visitData}: {loading: boolean; visitData: VisitD
           <Field label={
             <FormattedMessage id="dashboardandanalysis.analysis.day-sales" defaultMessage="Daily Sales" />
           }
-          value={`￥${numeral(123123).format('0,0')}`}
+            value={`￥${numeral(123123).format('0,0')}`}
           />
         }
         contentHeight={46}
       >
-        trend
+        <Trend flag="up" style={{ marginRight: 16 }}>
+          <FormattedMessage
+            id="dashboardandanalysis.analysis.week"
+            defaultMessage="Weekly Changes"
+          />
+          <span className={styles.trendText}>12%</span>
+        </Trend>
+        <Trend flag="down" >
+          <FormattedMessage id="dashboardandanalysis.analysis.day" defaultMessage="Daily Changes" />
+          <span className={styles.trendText}>11%</span>
+        </Trend>
+      </ChartCard>
+    </Col>
+    <Col {...topColResponsiveProps}>
+      <ChartCard
+        bordered={false}
+        loading={loading}
+        title={
+          <FormattedMessage id="dashboardandanalysis.analysis.visits" defaultMessage="Visits" />
+        }
+        action={
+          <Tooltip
+            title={
+              <FormattedMessage
+                id="dashboardandanalysis.analysis.introduce"
+                defaultMessage="Introduce"
+              />
+            }
+          >
+            <InfoCircleOutlined />
+          </Tooltip>
+        }
+        total={numeral(4865).format('0,0')}
+        footer={
+          <Field
+            label={
+              <FormattedMessage
+                id="dashboardandanalysis.analysis.day-visits"
+                defaultMessage="Daily Visits"
+              />
+
+            }
+            value={numeral(4667).format('0,0')}
+          ></Field>
+        }
+        contentHeight={46}
+      >
+        <MiniArea color="#975FE4" data={visitData}/>
+        </ChartCard>
+    </Col>
+    <Col {...topColResponsiveProps}>
+      <ChartCard
+        bordered={false}
+        loading={loading}
+        title={
+          <FormattedMessage id="dashboardandanalysis.analysis.payments" defaultMessage="Payments" />
+        }
+        action={
+          <Tooltip
+            title={
+              <FormattedMessage
+                id="dashboardandanalysis.analysis.introduce"
+                defaultMessage="Introduce"
+              />
+            }
+          >
+            <InfoCircleOutlined />
+          </Tooltip>
+        }
+        total={numeral(6535).format('0,0')}
+        footer={
+          <Field label={
+            <FormattedMessage
+              id="dashboardandanalysis.analysis.conversion-rate"
+              defaultMessage="Conversion Rate" />
+          }
+            value="60%">
+
+          </Field>
+        }
+        contentHeight={46}
+      >
+        MiniBar
+      </ChartCard>
+    </Col>
+    <Col {...topColResponsiveProps}>
+      <ChartCard
+        loading={loading}
+        bordered={false}
+        title={
+          <FormattedMessage
+            id="dashboardandanalysis.analysis.operational-effect"
+            defaultMessage="Operational Effect"
+          />
+        }
+        action={
+          <Tooltip
+            title={
+              <FormattedMessage
+                id="dashboardandanalysis.analysis.introduce"
+                defaultMessage="Introduce"
+              />
+            }
+          >
+            <InfoCircleOutlined />
+          </Tooltip>
+        }
+        total="78%"
+        footer={
+          <div style={{ whiteSpace: 'nowrap', overflow: 'hidden' }}>
+            trend
+          </div>
+        }
+        contentHeight={46}
+      >
+        MiniProgress
       </ChartCard>
     </Col>
   </Row>
 )
 
-export default IntroduceRow;
+export default IntroduceRow
