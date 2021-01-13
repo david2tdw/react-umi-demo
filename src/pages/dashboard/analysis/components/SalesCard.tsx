@@ -9,6 +9,7 @@ import numeral from 'numeral'
 import { VisitDataType } from '../data.d'
 import { Bar } from './Charts'
 import styles from '../style.less'
+import Form from 'antd/lib/form/Form'
 
 
 const { RangePicker } = DatePicker
@@ -43,7 +44,7 @@ const SalesCard = ({
   loading: boolean
   selectDate: (key: 'today' | 'week' | 'month' | 'year') => void
 }) => {
-  const intl = useIntl();
+  const intl = useIntl()
   return (
     <Card loading={loading} bordered={false} bodyStyle={{ padding: 0 }}>
       <div className={styles.salesCard}>
@@ -75,7 +76,7 @@ const SalesCard = ({
               </div>
               <RangePicker value={rangePickerValue} onChange={handleRangePickerChange} style={{ width: 256 }} />
             </div>
-  
+
           }
           size="large"
           tabBarStyle={{ marginBottom: 24 }}
@@ -118,6 +119,37 @@ const SalesCard = ({
                         </li>
                       ))
                     }
+                  </ul>
+                </div>
+              </Col>
+            </Row>
+          </TabPane>
+          <TabPane
+            tab={
+              <FormattedMessage id="dashboardandanalysis.analysis.visits" defaultMessage="Visits" />
+            }
+            key="views"
+          >
+            <Row>
+              <Col xl={16} lg={12}>
+                <div className={styles.salesBar}>
+                  visit trend.....
+                </div>
+              </Col>
+              <Col xl={8} lg={12}>
+                <div className={styles.salesRank}>
+                  <h4 className={styles.rankingTitle}>
+                    <FormattedMessage
+                      id="dashboardandanalysis.analysis.visits-ranking"
+                      defaultMessage="Visits Ranking"
+                    />
+                  </h4>
+                  <ul className={styles.rankingList}>
+                    <li>工专路 0 号店</li>
+                    <li>工专路 1 号店</li>
+                    <li>工专路 1 号店</li>
+                    <li>工专路 1 号店</li>
+                    <li>工专路 1 号店</li>
                   </ul>
                 </div>
               </Col>
