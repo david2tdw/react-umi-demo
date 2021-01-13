@@ -3,6 +3,7 @@ import Field from './Field'
 import MiniArea from './MiniArea'
 import MiniBar from './MiniBar'
 import MiniProgress from './MiniProgress'
+import Bar from './Bar'
 import numeral from 'numeral'
 
 
@@ -15,6 +16,7 @@ const Charts = {
   MiniArea,
   MiniBar,
   MiniProgress,
+  Bar,
 }
 
 export {
@@ -25,4 +27,5 @@ export {
   MiniArea,
   MiniBar,
   MiniProgress,
+  Bar,
 }

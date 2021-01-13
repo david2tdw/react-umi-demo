@@ -87,7 +87,10 @@ const SalesCard = ({
             <Row>
               <Col xl={16} lg={12}>
                 <div className={styles.salesBar}>
-                  {/* <Bar /> */}
+                  <Bar
+                    height={295}
+                    data={salesData}
+                  />
                 </div>
               </Col>
               <Col xl={8} lg={12}>
