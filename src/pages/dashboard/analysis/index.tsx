@@ -1,32 +1,32 @@
-import {EllipsisOutlined} from '@ant-design/icons'
-import React, {Component, Suspense} from 'react'
-import {Col, Dropdown, Menu, Row} from 'antd'
-import { GridContent} from '@ant-design/pro-layout'
-import {RadioChangeEvent} from 'antd/es/radio'
-import {RangePickerProps} from 'antd/es/date-picker/'
+import { EllipsisOutlined } from '@ant-design/icons'
+import React, { Component, Suspense } from 'react'
+import { Col, Dropdown, Menu, Row } from 'antd'
+import { GridContent } from '@ant-design/pro-layout'
+import { RadioChangeEvent } from 'antd/es/radio'
+import { RangePickerProps } from 'antd/es/date-picker/'
 import moment from 'moment'
-import {connect, Dispatch} from 'umi'
+import { connect, Dispatch } from 'umi'
 
 // import PageLoading from './components/PageLoading'
-import {getTimeDistance} from './utils/utils'
-import {AnalysisData} from './data.d'
+import { getTimeDistance } from './utils/utils'
+import { AnalysisData } from './data.d'
 import styles from './style.less'
 
 const IntroduceRow = React.lazy(() => import('./components/IntroduceRow'))
-const SalesCard = React.lazy(() => import('./components/SalesCard'));
+const SalesCard = React.lazy(() => import('./components/SalesCard'))
+const TopSearch = React.lazy(() => import('./components/TopSearch'))
 
-
-type RangePickerValue = RangePickerProps<moment.Moment>['value'];
+type RangePickerValue = RangePickerProps<moment.Moment>['value']
 
 interface AnalysisProps {
-  dashboardAndanalysis: AnalysisData;
-  dispatch: Dispatch<any>;
-  loading: boolean;
+  dashboardAndanalysis: AnalysisData
+  dispatch: Dispatch<any>
+  loading: boolean
 }
 
 interface AnalysisState {
-  salesType: 'all' | 'online' | 'stores';
-  currentTabKey: string;
+  salesType: 'all' | 'online' | 'stores'
+  currentTabKey: string
   rangePickerValue: RangePickerValue
 }
 
@@ -40,20 +40,20 @@ class Analysis extends Component<AnalysisProps, AnalysisState> {
   reqRef: number = 0;
   timeoutId: number = 0;
 
-  componentDidMount () {
-    const {dispatch} = this.props
+  componentDidMount() {
+    const { dispatch } = this.props
     this.reqRef = requestAnimationFrame(() => {
       dispatch({
         type: 'dashboardAndanalysis/fetch',
       })
     })
   }
-  componentWillUnmount () {
-    const { dispatch} = this.props;
+  componentWillUnmount() {
+    const { dispatch } = this.props
     dispatch({
       type: 'dashboardAndanalysis/clear',
     })
-    cancelAnimationFrame(this.reqRef);
+    cancelAnimationFrame(this.reqRef)
     clearTimeout(this.timeoutId)
   }
 
@@ -72,7 +72,7 @@ class Analysis extends Component<AnalysisProps, AnalysisState> {
   handleRangePickerChange = (rangePickerValue: RangePickerValue) => {
 
   }
-  selectDate = (type: 'today' | 'week' | 'month' | 'year' ) => {
+  selectDate = (type: 'today' | 'week' | 'month' | 'year') => {
 
   }
 
@@ -80,10 +80,10 @@ class Analysis extends Component<AnalysisProps, AnalysisState> {
     return ''
   }
 
-  render () {
-    const {rangePickerValue, salesType, currentTabKey} = this.state;
-    const {dashboardAndanalysis, loading} = this.props;
-    const {visitData,
+  render() {
+    const { rangePickerValue, salesType, currentTabKey } = this.state
+    const { dashboardAndanalysis, loading } = this.props
+    const { visitData,
       visitData2,
       salesData,
       searchData,
@@ -91,7 +91,22 @@ class Analysis extends Component<AnalysisProps, AnalysisState> {
       offlineChartData,
       salesTypeData,
       salesTypeDataOnline,
-      salesTypeDataOffline,} = dashboardAndanalysis;
+      salesTypeDataOffline, 
+    } = dashboardAndanalysis
+
+      const menu = (
+        <Menu>
+          <Menu.Item>操作一</Menu.Item>
+          <Menu.Item>操作二</Menu.Item>
+        </Menu>
+      )
+      const dropdownGroup = (
+        <span className={styles.iconGroup}>
+          <Dropdown overlay={menu} placement="bottomRight">
+            <EllipsisOutlined />
+          </Dropdown>
+        </span>
+      );
     return (
       <GridContent>
         <React.Fragment>
@@ -108,29 +123,38 @@ class Analysis extends Component<AnalysisProps, AnalysisState> {
               selectDate={this.selectDate}
             />
           </Suspense>
-          <Row gutter={24} style={{marginTop:24}}>
+          <Row gutter={24} style={{ marginTop: 24 }}>
             <Col xl={12} lg={24}>
               <Suspense fallback={null}>
-                top search.
+                <TopSearch loading={loading}
+                  visitData2={visitData2}
+                  searchData={searchData}
+                  dropdownGroup={dropdownGroup}
+                />
+              </Suspense>
+            </Col>
+            <Col xl={12} lg={24}>
+              <Suspense fallback={null}>
+                ProportionSales
               </Suspense>
             </Col>
           </Row>
         </React.Fragment>
       </GridContent>
-    );
+    )
   }
 }
 export default connect(({
   dashboardAndanalysis,
   loading,
 }: {
-  dashboardAndanalysis: any;
+  dashboardAndanalysis: any
   loading: {
     effects: {
-      [key: string]:boolean
+      [key: string]: boolean
     }
   }
 }) => ({
   dashboardAndanalysis,
   loading: loading.effects['dashboardAndanalysis/fetch']
-}))(Analysis);
+}))(Analysis)

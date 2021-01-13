@@ -14,7 +14,7 @@
     "@umijs/test": "^3.3.1",
     "antd": "^4.9.4",
     "axios": "^0.21.1",
-    "bizcharts": "^4.0.17",
+    "bizcharts": "3.5.3-beta.0",
     "classnames": "^2.2.6",
     "crypto-js": "^4.0.0",
     "echarts": "4.9.0",
