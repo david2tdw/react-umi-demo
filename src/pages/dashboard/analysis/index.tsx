@@ -15,6 +15,8 @@ import styles from './style.less'
 const IntroduceRow = React.lazy(() => import('./components/IntroduceRow'))
 const SalesCard = React.lazy(() => import('./components/SalesCard'))
 const TopSearch = React.lazy(() => import('./components/TopSearch'))
+const ProportionSales = React.lazy(() => import('./components/ProportionSales'))
+
 
 type RangePickerValue = RangePickerProps<moment.Moment>['value']
 
@@ -94,6 +96,13 @@ class Analysis extends Component<AnalysisProps, AnalysisState> {
       salesTypeDataOffline, 
     } = dashboardAndanalysis
 
+
+    let salesPieData;
+    if (salesType === 'all') {
+      salesPieData = salesTypeData
+    } else {
+      salesPieData = salesType === 'online'? salesTypeDataOnline : salesTypeDataOffline;
+    }
       const menu = (
         <Menu>
           <Menu.Item>操作一</Menu.Item>
@@ -135,7 +144,13 @@ class Analysis extends Component<AnalysisProps, AnalysisState> {
             </Col>
             <Col xl={12} lg={24}>
               <Suspense fallback={null}>
-                ProportionSales
+                <ProportionSales
+                  dropdownGroup={dropdownGroup}
+                  salesType={salesType}
+                  loading={loading}
+                  salesPieData={salesPieData}
+                  handleChangeSalesType={this.handleChangeSalesType}
+                />
               </Suspense>
             </Col>
           </Row>
