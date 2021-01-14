@@ -112,7 +112,13 @@ export default defineConfig({
                   icon: 'smile',
                   path: '/form/basic-form',
                   component: './form/basic-form'
-                }
+                },
+                {
+                  name: 'step-form',
+                  icon: 'smile',
+                  path: '/form/step-form',
+                  component: './form/step-form',
+                },
               ]
             },
             {
