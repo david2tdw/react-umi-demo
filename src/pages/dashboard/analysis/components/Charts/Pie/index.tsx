@@ -131,7 +131,7 @@ class Pie extends Component<PieProps, PieState>{
       origin.checked = true
       return origin
     })
-    console.log('getLegendData', legendData)
+    // console.log('getLegendData', legendData)
     this.setState({
       legendData,
     })
@@ -148,8 +148,9 @@ class Pie extends Component<PieProps, PieState>{
     const { legendData } = this.state
     legendData[i] = newItem
 
+    // console.log('xx', legendData)
     const filteredLegendData = legendData.filter((l) => l.checked).map(l => l.x)
-
+    // console.log('filteredxx', filteredLegendData)
     if (this.chart) {
       this.chart.filter('x', val => filteredLegendData.indexOf(`${val}`) > -1)
     }
@@ -176,7 +177,7 @@ class Pie extends Component<PieProps, PieState>{
     } = this.props
 
     const {legendData, legendBlock} = this.state;
-    console.log('render', legendData)
+    // console.log('render', legendData)
     const pieClassName = classNames(styles.pie, className, {
       [styles.hasLegend]: !!hasLegend,
       [styles.legendBlock]: legendBlock,
@@ -291,12 +292,12 @@ class Pie extends Component<PieProps, PieState>{
         </ReactFitText>
         {hasLegend && (
           <ul className={styles.legend}>
-            {legendData.map((item, i) => {
+            {legendData.map((item, i) => (
               <li key={item.x} onClick={() => this.handleLegendClick(item, i)}>
-                1111
                 <span className={styles.dot} style={{
                   backgroundColor: !item.checked ? '#aaa': item.color,
-                }}>
+                }}
+                />
                   <span className={styles.legendTitle}>{item.x}</span>
                   <Divider type="vertical" />
                   <span className={styles.percent}>
@@ -305,9 +306,8 @@ class Pie extends Component<PieProps, PieState>{
                   <span className={styles.value}>
                   {valueFormat? valueFormat(item.y): item.y}
                   </span>
-                </span>
               </li>
-            })}
+            ))}
           </ul>
         )}
       </div>
