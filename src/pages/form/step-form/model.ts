@@ -27,7 +27,7 @@ export interface ModelType {
 }
 
 const Model: ModelType = {
-  namespace: 'formAndstepForm',
+  namespace: 'formAndstepForm1',
   state: {
     current: 'info',
     step: {
@@ -52,12 +52,6 @@ const Model: ModelType = {
     }
   },
   reducers: {
-    saveCurrentStep (state, {payload}) {
-      return {
-        ...state,
-        current: payload,
-      }
-    },
     saveStepFormData (state, {payload}) {
       return {
         ...state,
@@ -66,7 +60,13 @@ const Model: ModelType = {
           ...payload,
         }
       }
-    }
+    },
+    saveCurrentStep (state, {payload}) {
+      return {
+        ...state,
+        current: payload,
+      }
+    },
   }
 }
 

@@ -40,7 +40,7 @@ const StepForm : React.FC<StepFormProps>= ({current}) => {
   }, [current]);
 
   return (
-    <PageContainer>
+    <PageContainer content="将一个冗长或用户不熟悉的表单任务分成多个步骤，指导用户完成。">
       <Card bordered={false}>
       <>
         <Steps current={currentStep} className={styles.steps}>
@@ -56,7 +56,7 @@ const StepForm : React.FC<StepFormProps>= ({current}) => {
 }
 
 
-
-export default connect(({formAndstepForm}: {formAndstepForm: StateType}) => ({
-  current: formAndstepForm.current
+// state to props
+export default connect(({formAndstepForm1}: {formAndstepForm1: StateType}) => ({
+  current: formAndstepForm1.current
 }))(StepForm)
