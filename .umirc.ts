@@ -97,7 +97,27 @@ export default defineConfig({
                   component: './list/card-list',
                 },
               ]
-            }
+            },
+            {
+              path: '/form',
+              icon: 'form',
+              name: 'form',
+              routes: [
+                {
+                  path: '/',
+                  redirect: '/form/basic-form',
+                },
+                {
+                  name: 'basic-form',
+                  icon: 'smile',
+                  path: '/form/basic-form',
+                  component: './form/basic-form'
+                }
+              ]
+            },
+            {
+              component: '404',
+            },
           ],
         },
         // {
