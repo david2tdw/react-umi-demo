@@ -1,7 +1,9 @@
 
-const Index = () => {
+const CardList = () => {
   return (
-    <div></div>
+    <div>
+      card list...
+    </div>
   );
 }
-export default Index;
+export default CardList;

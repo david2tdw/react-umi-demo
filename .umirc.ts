@@ -2,7 +2,7 @@
 
 import { defineConfig } from 'umi'
 import { resolve } from 'path'
-import { SmileOutlined, CrownOutlined } from '@ant-design/icons';
+import { SmileOutlined, CrownOutlined } from '@ant-design/icons'
 
 const theme = require('./config/theme.config.js')
 
@@ -85,19 +85,19 @@ export default defineConfig({
                 },
               ]
             },
-            {
-              path: '/list',
-              icon: 'table',
-              name: 'list',
-              routes: [
-                {
-                  name: 'card-list',
-                  icon: 'smile',
-                  path: '/list/card-list',
-                  component: './list/card-list',
-                },
-              ]
-            },
+            // {
+            //   path: '/list',
+            //   icon: 'table',
+            //   name: 'list',
+            //   routes: [
+            //     {
+            //       name: 'card-list',
+            //       icon: 'smile',
+            //       path: '/list/card-list',
+            //       component: './list/card-list',
+            //     },
+            //   ]
+            // },
             {
               path: '/form',
               icon: 'form',
@@ -118,6 +118,29 @@ export default defineConfig({
                   icon: 'smile',
                   path: '/form/step-form',
                   component: './form/step-form',
+                },
+              ]
+            },
+            {
+              path: '/list',
+              icon: 'table',
+              name: 'list',
+              routes: [
+                {
+                  path: '/',
+                  redirect: '/list/table-list'
+                },
+                {
+                  name: 'table-list',
+                  icon: 'smile',
+                  path: '/list/table-list',
+                  component: './list/table-list',
+                },
+                {
+                  name: 'card-list',
+                  icon: 'smile',
+                  path: '/list/card-list',
+                  component: './list/card-list',
                 },
               ]
             },
