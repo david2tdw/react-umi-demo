@@ -18,6 +18,15 @@ import RightContent from '@/components/GlobalHeader/RightContent'
 import { ConnectState } from '@/models/connect';
 import { getMatchMenu } from '@umijs/route-utils';
 import logo from '../assets/logo.svg';
+import {HomeOutlined, PicLeftOutlined, SmileOutlined, SettingOutlined,} from '@ant-design/icons';
+
+
+const iconEnum = {
+  smile: <SmileOutlined />,
+  home: <HomeOutlined />,
+  picLeft: <PicLeftOutlined />,
+  setting: <SettingOutlined />,
+};
 
 const noMatch = (
   <Result
@@ -31,6 +40,7 @@ const noMatch = (
     }
   />
 );
+
 export interface BasicLayoutProps extends ProLayoutProps {
   breadcrumbNameMap: {
     [path: string]: MenuDataItem;
@@ -52,10 +62,13 @@ export type BasicLayoutContext = { [K in 'location']: BasicLayoutProps[K] } & {
 
 const menuDataRender = (menuList: MenuDataItem[]): MenuDataItem[] =>
   menuList.map((item) => {
+    // console.log(item)
     const localItem = {
       ...item,
+      // icon: iconEnum[String(item.icon)],  
       children: item.children ? menuDataRender(item.children) : undefined,
     };
+    console.log(item)
     return localItem;
   });
 
@@ -130,6 +143,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
         formatMessage={formatMessage}
         {...props}
         {...settings}
+        iconfontUrl="//at.alicdn.com/t/font_8d5l8fzk5b87iudi.js"
         onCollapse={handleMenuCollapse}
         onMenuHeaderClick={() => history.push('/')}
         menuItemRender={(menuItemProps, defaultDom) => {
@@ -183,7 +197,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
   );
 };
 
-export default connect(({ global = {}, settings }: ConnectState) => ({
+export default connect(({ global, settings }: ConnectState) => ({
   collapsed: global.collapsed,
   settings,
 }))(BasicLayout);

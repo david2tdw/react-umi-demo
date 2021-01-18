@@ -9,6 +9,7 @@
     "test:coverage": "umi-test --coverage"
   },
   "dependencies": {
+    "@ant-design/icons": "4.0.0",
     "@ant-design/pro-descriptions": "^1.4.7",
     "@ant-design/pro-layout": "^6.10.3",
     "@ant-design/pro-table": "^2.25.1",

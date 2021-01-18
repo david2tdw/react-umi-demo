@@ -1,16 +1,14 @@
-const routes =  [
+import React from 'react'
+import { SmileOutlined, CrownOutlined, TabletOutlined } from '@ant-design/icons'
+export default [
   {
     path: '/',
     component: '../layouts/BlankLayout',
     routes: [
       {
         path: '/user',
-        component: '../layouts/UserLayout',
+        redirect: '/user/login',
         routes: [
-          {
-            path: '/user',
-            redirect: '/user/login'
-          },
           {
             name: 'login',
             icon: 'smile',
@@ -47,9 +45,32 @@ const routes =  [
               },
               {
                 name: 'analysis',
-                icon: 'smile',
+                icon: <SmileOutlined />,
                 path: '/dashboard/analysis',
                 component: './dashboard/analysis',
+              },
+            ]
+          },
+          {
+            path: '/form',
+            icon: 'form',
+            name: 'form',
+            routes: [
+              {
+                path: '/',
+                redirect: '/form/basic-form',
+              },
+              {
+                name: 'basic-form',
+                icon: 'smile',
+                path: '/form/basic-form',
+                component: './form/basic-form'
+              },
+              {
+                name: 'step-form',
+                icon: 'smile',
+                path: '/form/step-form',
+                component: './form/step-form',
               },
             ]
           },
@@ -59,47 +80,28 @@ const routes =  [
             name: 'list',
             routes: [
               {
+                path: '/',
+                redirect: '/list/table-list'
+              },
+              {
+                name: 'table-list',
+                icon: 'smile',
+                path: '/list/table-list',
+                component: './list/table-list',
+              },
+              {
                 name: 'card-list',
                 icon: 'smile',
                 path: '/list/card-list',
                 component: './list/card-list',
               },
             ]
+          },
+          {
+            component: '404',
           }
-        ],
-      },
-      // {
-      //   path:'/',
-      //   // component: '../layouts/BasicLayout',
-      //   // Routes: ['src/pages/Authorized'],
-      //   authority: ['admin','user'],
-      //   routes: [
-      //     {
-      //       path: '/',
-      //       redirect: '/dashboard/analysis'
-      //     },
-      //     {
-      //       path: '/dashboard',
-      //       name: 'dashboard',
-      //       icon: 'dashboard',
-      //       routes: [
-      //         {
-      //           path: '/',
-      //           redirect: '/dashboard/analysis',
-      //         },
-      //         {
-      //           name: 'analysis',
-      //           icon: 'smile',
-      //           path: '/dashboard/analysis',
-      //           component: './dashboard/analysis'
-      //         }
-      //       ]
-      //     }
-      //   ]
-      // }
-    ],
-  },
+        ]
+      }
+    ]
+  }
 ]
-
-export default  routes
-

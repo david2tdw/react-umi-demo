@@ -1,7 +1,7 @@
 import React , {Component} from 'react'
 import ReactEcharts from 'echarts-for-react'
 import PropTypes from 'prop-types'
-import Context from '@context'
+import Context from '@/layouts/Context'
 import chartConfig from './chartConfig'
 
 let timer = null;

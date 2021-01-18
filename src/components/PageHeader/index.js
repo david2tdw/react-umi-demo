@@ -3,7 +3,8 @@ import Breadcrumb from './breadcrumb';
 import { InfoCircleOutlined } from '@ant-design/icons';
 import isEqual from 'lodash/isEqual';
 import classnames from 'classnames';
-import { sysDefultPage } from '@platformConfig';
+// import { sysDefultPage } from '@/config/platform/Config';
+import { sysDefultPage } from '../../../config/platform.config';
 import styles from './index.less';
 
 // cosnt unique = (origin) => origin.filter(function (item, index, array) {

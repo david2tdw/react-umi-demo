@@ -1,5 +1,5 @@
 import { PureComponent } from 'react';
-import Context from '@context';
+import Context from '@/layouts/Context';
 
 export default WrappedComponent => {
   return class extends PureComponent {

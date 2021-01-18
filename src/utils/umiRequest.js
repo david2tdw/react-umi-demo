@@ -1,7 +1,9 @@
 import { extend } from 'umi-request';
 import { notification } from 'antd';
 import { history } from 'umi';
-import { apiPrefix } from '@platformConfig';
+// import { apiPrefix } from '@platformConfig';
+
+import { apiPrefix } from '../../config/platform.config';
 
 const codeMessage = {
   200: '服务器成功返回请求的数据。',

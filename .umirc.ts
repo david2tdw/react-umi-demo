@@ -4,7 +4,7 @@ import { defineConfig } from 'umi'
 import { resolve } from 'path'
 import { SmileOutlined, CrownOutlined } from '@ant-design/icons'
 
-const theme = require('./config/theme.config.js')
+// const theme = require('./config/theme.config.js')
 
 export default defineConfig({
   // layout: {},
@@ -14,7 +14,7 @@ export default defineConfig({
   // routes: [
   //   { path: '/', component: '@/pages/index' },
   // ],
-  theme,
+  // theme,
   base: '/',
   // treeShaking: true,
   // history: 'hash',
@@ -51,7 +51,7 @@ export default defineConfig({
             },
             {
               name: 'register',
-              icon: 'smile',
+              icon: 'icon-twitter',
               path: '/user/register',
               component: './user/register',
             },
@@ -71,7 +71,7 @@ export default defineConfig({
             {
               path: '/dashboard',
               name: 'dashboard',
-              icon: 'dashboardxx',
+              icon: 'icon-shoucang1',
               routes: [
                 {
                   path: '/',
@@ -79,7 +79,7 @@ export default defineConfig({
                 },
                 {
                   name: 'analysis',
-                  icon: 'smile',
+                  icon: 'icon-facebook',
                   path: '/dashboard/analysis',
                   component: './dashboard/analysis',
                 },
@@ -100,7 +100,7 @@ export default defineConfig({
             // },
             {
               path: '/form',
-              icon: 'form',
+              icon: 'icon-twitter',
               name: 'form',
               routes: [
                 {
@@ -109,7 +109,7 @@ export default defineConfig({
                 },
                 {
                   name: 'basic-form',
-                  icon: 'smile',
+                  icon: 'icon-twitter',
                   path: '/form/basic-form',
                   component: './form/basic-form'
                 },
@@ -123,7 +123,7 @@ export default defineConfig({
             },
             {
               path: '/list',
-              icon: 'table',
+              icon: 'icon-twitter',
               name: 'list',
               routes: [
                 {
