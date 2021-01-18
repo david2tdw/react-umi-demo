@@ -10,6 +10,8 @@ import ProLayout, {
   DefaultFooter,
   SettingDrawer,
 } from '@ant-design/pro-layout';
+
+
 import React, { useEffect, useMemo, useRef } from 'react';
 import { Link, useIntl, connect, Dispatch, history } from 'umi';
 import { GithubOutlined } from '@ant-design/icons';
@@ -18,15 +20,23 @@ import RightContent from '@/components/GlobalHeader/RightContent'
 import { ConnectState } from '@/models/connect';
 import { getMatchMenu } from '@umijs/route-utils';
 import logo from '../assets/logo.svg';
-import {HomeOutlined, PicLeftOutlined, SmileOutlined, SettingOutlined,} from '@ant-design/icons';
+import {HomeOutlined, PicLeftOutlined, SmileOutlined, HeartOutlined, SettingOutlined,} from '@ant-design/icons';
+import defaultMenus from './defaultMenus'
 
-
-const iconEnum = {
+const IconMap = {
   smile: <SmileOutlined />,
+  heart: <HeartOutlined />,
   home: <HomeOutlined />,
   picLeft: <PicLeftOutlined />,
   setting: <SettingOutlined />,
 };
+
+const loopMenuItem = (menus: MenuDataItem[]): MenuDataItem[] =>
+  menus.map(({ icon, children, ...item }) => ({
+    ...item,
+    icon: icon && IconMap[icon as string],
+    children: children && loopMenuItem(children),
+  }));
 
 const noMatch = (
   <Result
@@ -128,13 +138,13 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
     }
   }; // get children authority
 
-  const authorized = useMemo(
-    () =>
-      getMatchMenu(location.pathname || '/', menuDataRef.current).pop() || {
-        authority: undefined,
-      },
-    [location.pathname],
-  );
+  // const authorized = useMemo(
+  //   () =>
+  //     getMatchMenu(location.pathname || '/', menuDataRef.current).pop() || {
+  //       authority: undefined,
+  //     },
+  //   [location.pathname],
+  // );
   const { formatMessage } = useIntl();
   return (
     <>
@@ -162,16 +172,16 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
           },
           ...routers,
         ]}
-        itemRender={(route, params, routes, paths) => {
-          const first = routes.indexOf(route) === 0;
-          return first ? (
-            <Link to={paths.join('/')}>{route.breadcrumbName}</Link>
-          ) : (
-            <span>{route.breadcrumbName}</span>
-          );
-        }}
+        // itemRender={(route, params, routes, paths) => {
+        //   const first = routes.indexOf(route) === 0;
+        //   return first ? (
+        //     <Link to={paths.join('/')}>{route.breadcrumbName}</Link>
+        //   ) : (
+        //     <span>{route.breadcrumbName}</span>
+        //   );
+        // }}
         footerRender={() => defaultFooterDom}
-        menuDataRender={menuDataRender}
+        menuDataRender={() => loopMenuItem(defaultMenus)}
         rightContentRender={() => <RightContent />}
         postMenuData={(menuData) => {
           menuDataRef.current = menuData || [];
