@@ -20,7 +20,7 @@ import RightContent from '@/components/GlobalHeader/RightContent'
 import { ConnectState } from '@/models/connect';
 import { getMatchMenu } from '@umijs/route-utils';
 import logo from '../assets/logo.svg';
-import {HomeOutlined, PicLeftOutlined, SmileOutlined, HeartOutlined, SettingOutlined,} from '@ant-design/icons';
+import {HomeOutlined, PicLeftOutlined, SmileOutlined, HeartOutlined, SettingOutlined, SlackSquareOutlined} from '@ant-design/icons';
 import defaultMenus from './defaultMenus'
 
 const IconMap = {
@@ -29,6 +29,7 @@ const IconMap = {
   home: <HomeOutlined />,
   picLeft: <PicLeftOutlined />,
   setting: <SettingOutlined />,
+  SlackSquare: <SlackSquareOutlined />,
 };
 
 const loopMenuItem = (menus: MenuDataItem[]): MenuDataItem[] =>

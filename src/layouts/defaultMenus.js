@@ -17,7 +17,7 @@ export default [
   {
     path: '/form',
     name: 'form',
-    icon: 'heart',
+    icon: 'setting',
     children: [
       {
         path: '/form/basic-form',
@@ -34,7 +34,7 @@ export default [
   {
     path: '/list',
     name: 'list',
-    icon: 'heart',
+    icon: 'SlackSquare',
     children: [
       {
         path: '/list/table-list',
