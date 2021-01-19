@@ -13,7 +13,8 @@ export interface HeaderDropdownProps extends Omit<DropDownProps, 'overlay'> {
 }
 
 const HeaderDropdown: React.FC<HeaderDropdownProps> = ({
-  overlayClassName: cls, ...restProps
+  overlayClassName: cls,
+  ...restProps
 }) => (
   <Dropdown overlayClassName={classNames(styles.container, cls)} {...restProps} />
 )
