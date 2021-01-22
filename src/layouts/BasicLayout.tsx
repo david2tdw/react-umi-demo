@@ -8,17 +8,16 @@ import ProLayout, {
   BasicLayoutProps as ProLayoutProps,
   Settings,
   DefaultFooter,
-  SettingDrawer,
 } from '@ant-design/pro-layout';
 
 
 import React, { useEffect, useMemo, useRef } from 'react';
-import { Link, useIntl, connect, Dispatch, history } from 'umi';
+import { Link, useIntl, connect, Dispatch, history, Route } from 'umi';
 import { GithubOutlined } from '@ant-design/icons';
 import { Result, Button } from 'antd';
 import RightContent from '@/components/GlobalHeader/RightContent'
 import { ConnectState } from '@/models/connect';
-import { getMatchMenu } from '@umijs/route-utils';
+// import { getMatchMenu } from '@umijs/route-utils';
 import logo from '../assets/logo.svg';
 import {HomeOutlined, PicLeftOutlined, SmileOutlined, HeartOutlined, SettingOutlined, SlackSquareOutlined} from '@ant-design/icons';
 import defaultMenus from './defaultMenus'
@@ -208,6 +207,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = (props) => {
   );
 };
 
+// global, settings为models的namespace
 export default connect(({ global, settings }: ConnectState) => ({
   collapsed: global.collapsed,
   settings,
