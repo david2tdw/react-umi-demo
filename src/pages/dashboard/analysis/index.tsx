@@ -72,13 +72,39 @@ class Analysis extends Component<AnalysisProps, AnalysisState> {
   }
 
   handleRangePickerChange = (rangePickerValue: RangePickerValue) => {
-
+    const { dispatch } = this.props
+    this.setState({
+      rangePickerValue,
+    })
+    dispatch({
+      type: 'dashboardAndanalysis/fetchSalesData',
+    })
   }
   selectDate = (type: 'today' | 'week' | 'month' | 'year') => {
-
-  }
+    const { dispatch } = this.props
+    this.setState({
+      rangePickerValue: getTimeDistance(type),
+    })
+    dispatch({
+      type: 'dashboardAndanalysis/fetchSalesData',
+    })
+  };
 
   isActive = (type: 'today' | 'week' | 'month' | 'year') => {
+    const { rangePickerValue } = this.state
+    if (!rangePickerValue) {
+      return ''
+    }
+    const value = getTimeDistance(type)
+    if (!value) {
+      return ''
+    }
+    if (!rangePickerValue[0] || !rangePickerValue[1]) {
+      return ''
+    }
+    if (rangePickerValue[0].isSame(value[0] as moment.Moment, 'day') && rangePickerValue[1].isSame(value[1] as moment.Moment, 'day')) {
+      return styles.currentData
+    }
     return ''
   }
 
@@ -93,29 +119,29 @@ class Analysis extends Component<AnalysisProps, AnalysisState> {
       offlineChartData,
       salesTypeData,
       salesTypeDataOnline,
-      salesTypeDataOffline, 
+      salesTypeDataOffline,
     } = dashboardAndanalysis
 
 
-    let salesPieData;
+    let salesPieData
     if (salesType === 'all') {
       salesPieData = salesTypeData
     } else {
-      salesPieData = salesType === 'online'? salesTypeDataOnline : salesTypeDataOffline;
+      salesPieData = salesType === 'online' ? salesTypeDataOnline : salesTypeDataOffline
     }
-      const menu = (
-        <Menu>
-          <Menu.Item>操作一</Menu.Item>
-          <Menu.Item>操作二</Menu.Item>
-        </Menu>
-      )
-      const dropdownGroup = (
-        <span className={styles.iconGroup}>
-          <Dropdown overlay={menu} placement="bottomRight">
-            <EllipsisOutlined />
-          </Dropdown>
-        </span>
-      );
+    const menu = (
+      <Menu>
+        <Menu.Item>操作一</Menu.Item>
+        <Menu.Item>操作二</Menu.Item>
+      </Menu>
+    )
+    const dropdownGroup = (
+      <span className={styles.iconGroup}>
+        <Dropdown overlay={menu} placement="bottomRight">
+          <EllipsisOutlined />
+        </Dropdown>
+      </span>
+    )
     return (
       <GridContent>
         <React.Fragment>
@@ -135,7 +161,8 @@ class Analysis extends Component<AnalysisProps, AnalysisState> {
           <Row gutter={24} style={{ marginTop: 24 }}>
             <Col xl={12} lg={24}>
               <Suspense fallback={null}>
-                <TopSearch loading={loading}
+                <TopSearch
+                  loading={loading}
                   visitData2={visitData2}
                   searchData={searchData}
                   dropdownGroup={dropdownGroup}
