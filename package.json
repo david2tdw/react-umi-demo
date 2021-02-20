@@ -21,6 +21,7 @@
     "bizcharts": "3.5.3-beta.0",
     "classnames": "^2.2.6",
     "crypto-js": "^4.0.0",
+    "d3": "^6.5.0",
     "echarts": "4.9.0",
     "echarts-for-react": "^2.0.16",
     "lint-staged": "^10.0.7",

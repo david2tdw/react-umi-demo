@@ -19,6 +19,7 @@ export default defineConfig({
   // treeShaking: true,
   // history: 'hash',
   targets: {}, //兼容浏览器版本
+  // 配置模块不打入代码
   externals: {
     d3: 'window.d3',
   },
@@ -145,6 +146,20 @@ export default defineConfig({
               ]
             },
             {
+              path: '/tree',
+              icon: 'table',
+              name: 'chart',
+              routes: [{
+                path: '/',
+                redirect: '/tree/chart-tree'
+              }, {
+                name: 'chart-tree',
+                icon: 'smile',
+                path: '/tree/chart-tree',
+                component: './tree'
+              }]
+            },
+            {
               component: '404',
             },
           ],
@@ -181,7 +196,7 @@ export default defineConfig({
       ],
     },
   ],
-  headScripts: [`https://cdn.bootcss.com/d3/5.9.2/d3.min.js`],
+  // headScripts: [`https://cdn.bootcss.com/d3/5.9.2/d3.min.js`],
   alias: {
     // '@': resolve(__dirname, '../src'),
     '@utils': resolve(__dirname, 'src/utils'),

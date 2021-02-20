@@ -48,4 +48,16 @@ export default [
       },
     ],
   },
+  {
+    path: '/tree',
+    name: 'chart',
+    icon: 'setting',
+    children: [
+      {
+        path: '/tree/chart-tree',
+        name: 'chart-tree',
+        icon: ''
+      }
+    ]
+  },
 ];
